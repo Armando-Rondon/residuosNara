@@ -1,0 +1,157 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>{{pageOrigin}}</ion-card-header>
+    <div *ngIf="!isLoading">
+      <ion-card-content>
+        <form novalidate (ngSubmit)="saveResiduo()" [formGroup]="residuoForm">
+          <div class="row mb-2">
+            <ion-label class="col-md-2" for="residuoNameId">LER</ion-label>
+            <div class="col-md-8">
+              <input
+                class="form-control"
+                id="residuoNameId"
+                type="text"
+                placeholder="LER (required)"
+                formControlName="ler"
+                name="ler"
+                ngDefaultControl
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="peligroId"
+              >Peligrosidad (0-4)</ion-label
+            >
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="peligrosidadId"
+                type="text"
+                placeholder="Peligo (0-4)"
+                formControlName="peligro"
+                name="peligoId"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <ion-label
+              class="col-md-2 col-form-label"
+              for="categoria_peligrosidadId"
+              >Categoria</ion-label
+            >
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="categoriaId"
+                placeholder="Categoria Peligrosidad"
+                type="text"
+                formControlName="categoria_peligrosidad"
+                name="categoria_peligrosidadId"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="tipoId"
+              >Tipo</ion-label
+            >
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="tipoId"
+                placeholder="Tipo"
+                type="text"
+                formControlName="tipo"
+                name="tipo"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="cantidadId"
+              >Cantidad</ion-label
+            >
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="cantidadId"
+                placeholder="Cantidad"
+                formControlName="cantidad"
+                name="cantidad"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="precioId"
+              >Precio</ion-label
+            >
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="precioId"
+                placeholder="Precio"
+                formControlName="precio"
+                name="precio"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="unidadId"
+              >Unidad</ion-label
+            >
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="precioId"
+                placeholder="Unidad"
+                formControlName="unidad"
+                name="unidad"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="comentarioId"
+              >Comentario</ion-label
+            >
+
+            <div class="col-md-8">
+              <ion-textarea
+                class="form-control"
+                id="comentarioId"
+                placeholder="Comentario"
+                row="3"
+                formControlName="comentario"
+                name="comentario"
+                ngDefaultControl
+              >
+              </ion-textarea>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <div class="offset-md-2 col-md-4">
+              <ion-button type="submit">Save</ion-button>
+              <ion-button [routerLink]="['']"> Cancel </ion-button>
+            </div>
+          </div>
+        </form>
+      </ion-card-content>
+    </div>
+    <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+  </ion-card>
+</ion-content>

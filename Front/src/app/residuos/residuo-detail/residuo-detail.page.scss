@@ -1,0 +1,47 @@
+h2 {
+  font-size: x-large;
+}
+
+h3 {
+  font-size: large;
+}
+ion-card {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+.md ion-label {
+  font-size: medium;
+  margin-left: 5%;
+}
+ion-label {
+  span.phone::before {
+    content: "\A ";
+    white-space: pre;
+  }
+}
+ion-item-divider {
+  color: white;
+}
+.md h3 {
+  display: inline-block;
+}
+h3 {
+  display: block;
+}
+.lg ion-img {
+  height: 50%;
+  width: 50%;
+  display: inline-block;
+}
+.md ion-img {
+  height: 40%;
+  width: 40%;
+  display: inline-block;
+}
+
+.sm ion-img {
+  height: 80%;
+  width: 80%;
+  display: inline-block;
+}

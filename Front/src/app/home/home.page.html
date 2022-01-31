@@ -1,0 +1,22 @@
+<!-- <app-navbar></app-navbar>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Hola</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-item *ngFor="let residuo of residuos" class="col-12 col-md-6 col-lg-4">
+      <app-residuo-item [residuo]="residuo"></app-residuo-item>
+    </ion-item>
+  </div>
+</ion-content>  -->
+
+<ion-content>
+  <div class="row p-5">
+    <div *ngFor="let residuo of residuos" class="col-12 col-md-6 col-lg-4 p-">
+      <app-residuo-item [residuo]="residuo"></app-residuo-item>
+    </div>
+  </div>
+</ion-content>

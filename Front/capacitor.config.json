@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Residuos-ARA",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

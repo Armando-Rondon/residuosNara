@@ -1,0 +1,48 @@
+@font-face {
+  font-family: myFont;
+  src: url("https://fonts.googleapis.com/css?family=Montserrat:100");
+}
+
+.vertical-align {
+  padding-top: 30px;
+}
+
+ion-text {
+  font-family: myFont;
+  font-size: 20px;
+  height: 100%;
+  display: block;
+  vertical-align: middle;
+}
+
+ion-button {
+  font-style: oblique;
+  margin-top: 20px;
+}
+
+ion-title {
+  font-size: medium;
+  font-family: myFont;
+  font-style: oblique;
+}
+
+.ios ion-title {
+  font-size: x-small;
+  font-family: myFont;
+  font-style: oblique;
+}
+
+ion-grid {
+  background: linear-gradient(
+    100deg,
+    rgb(203, 236, 125),
+    var(--ion-color-primary),
+    var(--ion-color-primary),
+    var(--ion-color-primary),    
+    var(--ion-color-primary)
+  );
+}
+
+ion-icon {
+  color: black;
+}

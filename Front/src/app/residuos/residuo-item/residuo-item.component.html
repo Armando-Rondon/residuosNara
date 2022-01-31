@@ -1,0 +1,33 @@
+<!--
+  CARD HECHO EN BOOTSTRAP
+<div class="card m-2">
+  <div class="card-header">
+    <h5>
+      LER: <a [routerLink]="['/residuos', residuo.id]">{{ residuo.ler }}</a>
+      <p>Cantidad: {{ residuo.cantidad }}</p>
+    </h5>
+  </div>
+  <div class="card-body">
+    <h6>Peligrosidad: {{ residuo.peligrosidad }}</h6>
+    <h6>Comentario:</h6>
+    <div>
+      {{ residuo.comentario }}
+    </div>
+  </div>
+</div>
+-->
+
+<!-- CARD HECHO EN IONIC -->
+<ion-card>
+  <ion-card-header>
+  
+    <ion-card-title>LER: <a [routerLink]="['/residuos', residuo.id]">{{ residuo.ler }}</a></ion-card-title>
+    <ion-card-subtitle>Cantidad: {{ residuo.cantidad }} {{residuo.unidad}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-label><h6>Peligrosidad: {{ residuo.peligro }}</h6></ion-label>
+    <ion-label><h6>Precio: {{ residuo.precio }} </h6> </ion-label>
+    <ion-item-divider> <ion-text>{{ residuo.comentario }}</ion-text></ion-item-divider>
+    
+  </ion-card-content>
+</ion-card>
