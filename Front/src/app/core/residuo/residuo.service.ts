@@ -10,7 +10,7 @@ import { Residuo } from '../../shared/residuo';
   providedIn: 'root',
 })
 export class ResiduoService {
-  private residuosUrl = 'http://localhost:8000/residuos/';
+  private residuosUrl = 'https://localhost:8000/residuos/';
 
   constructor(private http: HttpClient) {}
 

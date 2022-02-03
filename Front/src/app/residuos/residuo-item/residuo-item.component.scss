@@ -5,3 +5,8 @@ ion-card-subtitle {
 ion-item-divider {
   color: white;
 }
+@media (max-width: 640px) {
+  ion-card {
+    width: 100%;
+  }
+}

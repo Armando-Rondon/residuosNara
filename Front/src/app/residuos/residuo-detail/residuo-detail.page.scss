@@ -2,11 +2,40 @@ h2 {
   font-size: x-large;
 }
 
+#str {
+  text-align: start;
+}
+
+section {
+  text-align: left;
+  margin: 1rem;
+  padding: 1rem;
+}
 h3 {
   font-size: large;
 }
+#aling-left {
+  position: left;
+}
+
+.md ion-card {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+.sm ion-card {
+  width: auto;
+  margin: auto;
+  text-align: center;
+}
+
 ion-card {
   width: 50%;
+  margin: auto;
+  text-align: center;
+}
+ion-card-content {
+  width: auto;
   margin: auto;
   text-align: center;
 }
@@ -20,14 +49,25 @@ ion-label {
     white-space: pre;
   }
 }
+ion-label {
+  span.phone::before {
+    content: "\A ";
+    white-space: pre;
+  }
+}
 ion-item-divider {
   color: white;
 }
 .md h3 {
   display: inline-block;
 }
+.sm h3 {
+  display: inline;
+  font-size: 1rem;
+}
 h3 {
   display: block;
+  font-size: 1rem;
 }
 .lg ion-img {
   height: 50%;
@@ -39,9 +79,36 @@ h3 {
   width: 40%;
   display: inline-block;
 }
-
 .sm ion-img {
   height: 80%;
   width: 80%;
   display: inline-block;
+}
+@media (max-width: 640px) {
+  section {
+    text-align: left;
+    margin: auto;
+    padding: auto;
+  }
+  ion-card {
+    height: 100%;
+    width: 100%;
+    align-items: start;
+  }
+
+  ion-label {
+    span.phone::before {
+      content: "\A ";
+      white-space: pre;
+    }
+  }
+  ion-img {
+    height: 30%;
+    width: 30%;
+    display: inline-block;
+  }
+
+  h3 {
+    font-size: 0.85rem;
+  }
 }
