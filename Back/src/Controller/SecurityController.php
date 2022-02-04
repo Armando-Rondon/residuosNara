@@ -11,10 +11,24 @@ class SecurityController extends AbstractController
     /**
      * @Route("/security", name="security")
      */
-    public function register(Request ): Response
+    public function register(Request $request, UserPasswordEncoderInterface $encoder)
     {
-        return $this->render('security/index.html.twig', [
-            'controller_name' => 'SecurityController',
-        ]);
+        $em = $this->getDoctrine()->getManager();
+        $data = $request->getContent();
+        $content = json_decode($data);
+
+        $username = $content->username;
+        $password = $content->password;
+
+        $user = new User($username);
+        $user->setPassword($encoder->encodePassword($user, $password));
+
+
+        $em->persist($user);
+        $em->flush();
+
+       return "";
     }
+
+
 }

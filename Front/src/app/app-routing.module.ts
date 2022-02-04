@@ -37,6 +37,10 @@ const routes: Routes = [
     path: 'iniciar-sesion',
     loadChildren: () => import('./iniciar-sesion/iniciar-sesion.module').then( m => m.IniciarSesionPageModule)
   },
+  {
+    path: 'registar',
+    loadChildren: () => import('./registar/registar.module').then( m => m.RegistarPageModule)
+  },
 ];
 
 @NgModule({
