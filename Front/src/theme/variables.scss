@@ -193,7 +193,7 @@
 
     --ion-item-background: var(--ion-color-secondary);
 
-    --ion-card-background: #ffffffce;
+    --ion-card-background: var(--ion-color-tertiary);
     --ion-card-color: #000000;
     --ion-card-subtitle-color: #000000;
   }
@@ -244,7 +244,7 @@
 
     --ion-tab-bar-background: #1f1f1f;
 
-    --ion-card-background: #ffffffce;
+    --ion-card-background: var(--ion-color-tertiary);
     --ion-card-color: #000000;
     --ion-card-subtitle-color: #000000;
   }
@@ -376,7 +376,7 @@
    */
 
   .md body {
-    --ion-background-color: var(--ion-color-primary-dark);
+    --ion-background-color: var(--ion-color-primary-dark) !important;
     // --ion-background-color-rgb: 18, 18, 18;
 
     --ion-text-color: #000000;
@@ -411,7 +411,7 @@
     --ion-tab-bar-background: var(--ion-color-primary-dark);
     --ion-button-color: var(--ion-color-secondary-dark);
 
-    --ion-card-background: #ffffff8f;
+    --ion-card-background: var(--ion-color-tertiary);
     --ion-card-color: #000000;
     --ion-card-subtitle-color: #000000;
   }

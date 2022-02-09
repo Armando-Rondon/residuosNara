@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ResiduoService } from '../../core/residuo/residuo.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
