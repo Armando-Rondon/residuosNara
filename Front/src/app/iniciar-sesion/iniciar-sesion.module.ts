@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { IniciarSesionPageRoutingModule } from './iniciar-sesion-routing.module';
 
 import { IniciarSesionPage } from './iniciar-sesion.page';
+import { SharedModule } from '../shared/shared.module';
+import { AuthService } from '../shared/auth.service';
 
 @NgModule({
   imports: [
@@ -15,7 +17,12 @@ import { IniciarSesionPage } from './iniciar-sesion.page';
     IonicModule,
     IniciarSesionPageRoutingModule,
     ReactiveFormsModule,
+    
   ],
   declarations: [IniciarSesionPage],
+  exports: [IniciarSesionPage],
+  providers: [
+    AuthService
+],
 })
 export class IniciarSesionPageModule {}

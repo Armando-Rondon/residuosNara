@@ -10,3 +10,6 @@ when@prod:
     framework:
         router:
             strict_requirements: null
+
+login_check:
+  path: /login_check

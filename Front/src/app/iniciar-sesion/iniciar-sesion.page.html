@@ -3,17 +3,17 @@
     <ion-card-header>{{pageOrigin}}</ion-card-header>
     <div *ngIf="!isLoading">
       <ion-card-content>
-        <form novalidate (ngSubmit)="iniciarSesion()" [formGroup]="iniciarSesionForm">
+        <form novalidate (ngSubmit)="login()" [formGroup]="form">
           <div class="row mb-2">
             <ion-label class="col-md-2" for="nifId">Nif</ion-label>
             <div class="col-md-8">
               <ion-input
                 class="form-control"
-                id="nifId"
+                id="usernameId"
                 type="text"
                 placeholder="Nif"
-                formControlName="nif"
-                name="nif"
+                formControlName="username"
+                name="username"
                 ngDefaultControl
               ></ion-input>
             </div>
@@ -27,11 +27,11 @@
             <div class="col-md-8">
               <ion-input
                 class="form-control"
-                id="contrasenaId"
+                id="passwordId"
                 type="text"
                 placeholder="Contraseña"
-                formControlName="contrasena"
-                name="contrasena"
+                formControlName="password"
+                name="password"
                 ngDefaultControl
               ></ion-input>
             </div>
@@ -39,7 +39,7 @@
 
           <div class="form-group row mb-2">
             <div class="offset-md-2 col-md-4">
-              <ion-button type="submit">Iniciar</ion-button>
+              <ion-button (click)="login()">Iniciar</ion-button>
               <ion-button [routerLink]="['']"> Cancel </ion-button>
             </div>
           </div>

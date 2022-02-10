@@ -4,6 +4,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [FooterComponent, NavbarComponent],
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    AuthService
   ],
 })
 export class SharedModule {}

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empresas } from '../shared/empresas';
+import * as moment from 'moment';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -13,6 +15,7 @@ export class IniciarSesionPage implements OnInit {
   errorMessage: string = '';
   iniciarSesionForm: FormGroup;
   isLoading: boolean;
+  form: FormGroup;
   empresa: Empresas = {
     id: null,
     nif: null,
@@ -27,15 +30,48 @@ export class IniciarSesionPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private activatedroute: ActivatedRoute,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.iniciarSesionForm = this.fb.group({
-      nif: '',
-      contrasena: '',
+    private router: Router,
+    private authService: AuthService,
+  ) {
+    this.form = this.fb.group({
+      username: ['',  Validators.required],
+      password: ['', Validators.required]
     });
   }
 
-  iniciarSesion(): void {}
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      username: '',
+      password: '',
+    });
+  }
+
+  login() {
+    const val = this.form.value;
+
+    if (val.username && val.password) {
+      this.authService.login(val.username, val.password)
+        .subscribe(
+          data => {
+            data = {
+              ...data,
+              u: val.username,
+            }
+            // Save session: Generate expiration date
+            const expire_moment = moment().add(1, 'days');
+            data.expires_at = JSON.stringify(expire_moment.valueOf())
+            this.authService.role(val.username, val.password).subscribe(r => {
+              data = {
+                ...data,
+                r: r[r.length - 1]
+              }
+              this.authService.setSession(data);
+            }
+            )
+            console.log("User is logged in");
+            this.router.navigateByUrl('/');
+          }
+        );
+    }
+  }
 }
