@@ -1,9 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Registar</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-card>
+    <ion-card-header>{{pageOrigin}}</ion-card-header>
+    <div *ngIf="!isLoading">
+      <ion-card-content>
+        <form novalidate (ngSubmit)="login()" [formGroup]="form">
+          <div class="row mb-2">
+            <ion-label class="col-md-2" for="nifId">Nif</ion-label>
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="usernameId"
+                type="text"
+                placeholder="Nif"
+                formControlName="username"
+                name="username"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
 
+          <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="contrasenaId"
+              >Contraseña
+            </ion-label>
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="passwordId"
+                type="text"
+                placeholder="Contraseña"
+                formControlName="password"
+                name="password"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <div class="offset-md-2 col-md-4">
+              <ion-button (click)="register()">Iniciar</ion-button>
+              <ion-button [routerLink]="['']"> Cancel </ion-button>
+            </div>
+          </div>
+        </form>
+      </ion-card-content>
+    </div>
+    <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+  </ion-card>
 </ion-content>

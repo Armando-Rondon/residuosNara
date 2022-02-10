@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/security", name="security")
+     * @Route("/register", name="register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $encoder)
     {
@@ -22,7 +22,7 @@ class SecurityController extends AbstractController
 
         $user = new User($username);
         $user->setPassword($encoder->encodePassword($user, $password));
-
+        
 
         $em->persist($user);
         $em->flush();
