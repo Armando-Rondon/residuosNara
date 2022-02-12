@@ -18,4 +18,10 @@ export class AppComponent {
     this.residuoService.getMaxResiduoId().subscribe((data) => (this.id = data));
     this.router.navigate(['/residuos', this.id, 'new']);
   }
+
+  showNavbar(){
+    
+  }
+
+
 }

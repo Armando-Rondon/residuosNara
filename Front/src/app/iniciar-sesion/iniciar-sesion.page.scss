@@ -6,4 +6,14 @@ ion-card {
   margin-top: 5%;
   text-align: center;
 }
-//Ariel que haces?
+
+@media (max-width: 640px) {
+  ion-card {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    margin-top: 30%;
+    text-align: center;
+  }
+}

@@ -58,9 +58,9 @@ class EmpresaController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="empresa_register", methods={"GET", "POST"})
+     * @Route("/registerEmpresa", name="empresa_register", methods={"GET", "POST"})
      */
-    public function register(Request $request, EntityManagerInterface $entityManager): Response
+    public function registerEmpresa(Request $request, EntityManagerInterface $entityManager): Response
     {
 
         $empresa = new Empresa();

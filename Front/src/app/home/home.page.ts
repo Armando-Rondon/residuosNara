@@ -15,7 +15,7 @@ export class HomePage {
       .getResiduos()
       .subscribe((data: Residuo[]) => (this.residuos = data));
   }
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.residuoService
       .getResiduos()
       .subscribe((data: Residuo[]) => (this.residuos = data));

@@ -14,8 +14,20 @@
 </ion-content>  -->
 
 <ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Buscar por Ler:</ion-label>
+      <ion-select multiple="true" cancelText="Cancelar" okText="Buscar">
+        <ion-select-option value="ejemplo1">Ejemplo1</ion-select-option>
+        <ion-select-option value="ejemplo2">Ejemplo2</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
   <div class="row p-5">
-    <div *ngFor="let residuo of residuos" class="col-12 col-md-6 col-lg-4 p- with" >
+    <div
+      *ngFor="let residuo of residuos"
+      class="col-12 col-md-6 col-lg-4 p- with"
+    >
       <app-residuo-item [residuo]="residuo"></app-residuo-item>
     </div>
   </div>
