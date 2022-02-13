@@ -2,17 +2,15 @@ img {
   box-shadow: 0px 0px 0.3rem lighten(rgb(152, 189, 67), 3%);
   background-color: #39a81d75;
 }
-ion-app {
-  margin-top: 3.5rem;
+ion-list {
+  margin-top: 2rem;
+  box-shadow: 0px 0px 0.3rem lighten(rgb(152, 189, 67), 3%);
 }
 
 ion-toolbar {
   background-color: #3e852ca9;
 }
 @media (max-width: 640px) {
-  ion-app {
-    margin-top: 2.25rem;
-  }
   ion-text {
     font-size: small;
   }

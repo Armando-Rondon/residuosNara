@@ -5,14 +5,14 @@
 ion-list {
   width: 95%;
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 4rem;
   box-shadow: 0px 0px 0.2rem lighten(rgb(152, 189, 67), 3%);
   background-color: rgb(108, 136, 41);
 }
 @media (max-width: 640px) {
   ion-list {
     margin: auto;
-    margin-top: 1.5rem;
+    margin-top: 5rem;
     box-shadow: 0px 0px 0.2rem lighten(rgb(152, 189, 67), 3%);
     width: 95%;
   }
