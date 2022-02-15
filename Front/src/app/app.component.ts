@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResiduoService } from './core/residuo/residuo.service';
+import { AuthService } from './shared/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,25 @@ import { ResiduoService } from './core/residuo/residuo.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  private mostar: boolean = false;
   id: any;
+  username: String;
 
-  constructor(private residuoService: ResiduoService, private router: Router) {}
+  constructor(
+    private residuoService: ResiduoService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit() {
+    if (!this.isLoggedIn()) {
+      this.authService.logout();
+      this.username = "";
+      this.router.navigate(['/']);
+    } else {
+      this.username = localStorage.getItem('u');
+    }
+
+  }
 
   newResiduo() {
     // Get max residuo Id from the residuo list
@@ -19,9 +35,13 @@ export class AppComponent {
     this.router.navigate(['/residuos', this.id, 'new']);
   }
 
-  showNavbar(){
-    
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
   }
 
-
+  logout() {
+    this.authService.logout();
+    this.username = "";
+    this.router.navigate(['/']);
+  }
 }

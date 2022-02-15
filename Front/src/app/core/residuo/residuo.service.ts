@@ -5,17 +5,32 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 import { Residuo } from '../../shared/residuo';
+import { Ler } from 'src/app/shared/ler';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResiduoService {
   private residuosUrl = 'https://localhost:8000/residuos/';
-
+  private residuosByLerUrl = 'https://localhost:8000/residuos/ler';
+  private lersUrl = 'https://localhost:8000/ler/';
   constructor(private http: HttpClient) {}
+
+  getResiduosByLer(lers: any): Observable<Residuo[]> {
+    return this.http.get<Residuo[]>(this.residuosByLerUrl).pipe(
+      tap((data) => console.log(JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
 
   getResiduos(): Observable<Residuo[]> {
     return this.http.get<Residuo[]>(this.residuosUrl).pipe(
+      tap((data) => console.log(JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+  getLers(): Observable<Ler[]> {
+    return this.http.get<Ler[]>(this.lersUrl).pipe(
       tap((data) => console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );

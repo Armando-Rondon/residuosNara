@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ResiduosModule } from './residuos/residuos.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthService } from './shared/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,9 +18,12 @@ import { SharedModule } from './shared/shared.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     ResiduosModule,
-    SharedModule
+    SharedModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    AuthService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

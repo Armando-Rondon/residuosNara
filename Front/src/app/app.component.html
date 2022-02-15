@@ -4,6 +4,9 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
         <ion-title>NARA</ion-title>
+        <ion-subtitle *ngIf="isLoggedIn()">{{
+          this.username | uppercase
+        }}</ion-subtitle>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
@@ -20,25 +23,34 @@
                   src="../../../assets/icon/logo.png"
               /></a>
             </ion-col>
-            <ion-col size-lg="3" size-sm="4">
+            <ion-col size-lg="3" size-sm="4" *ngIf="isLoggedIn()">
               <ion-button fill="clear" color="Dark" (click)="newResiduo()">
                 <ion-icon name="add-circle"></ion-icon>
               </ion-button>
             </ion-col>
           </ion-row>
-          <ion-row>
+          <ion-row *ngIf="!isLoggedIn()">
             <ion-col size-lg="5" size-md="3" size-sm="2">
               <ion-text color="alert" class="vertical-align"
-                ><a [routerLink]="['/iniciar-sesion']"
+                ><ion-button size="small" [routerLink]="['/iniciar-sesion']"
                   >Iniciar sesión <ion-icon name="log-in"></ion-icon
-                ></a>
+                ></ion-button>
               </ion-text>
             </ion-col>
+          </ion-row>
+          <ion-row *ngIf="!isLoggedIn()">
             <ion-col size-lg="5" size-md="7" size-sm="8">
               <ion-text color="alert" class="vertical-align">
-                <a [routerLink]="['/registar']"
-                  >/Nueva Cuenta <ion-icon name="person-add"></ion-icon
-                ></a>
+                <ion-button size="small" [routerLink]="['/registar']"
+                  >Nueva Cuenta <ion-icon name="person-add"></ion-icon
+                ></ion-button>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="isLoggedIn()">
+            <ion-col size-lg="5" size-md="7" size-sm="8">
+              <ion-text color="alert" class="vertical-align">
+                <ion-button size="small" (click)="logout()">Salir</ion-button>
               </ion-text>
             </ion-col>
           </ion-row>

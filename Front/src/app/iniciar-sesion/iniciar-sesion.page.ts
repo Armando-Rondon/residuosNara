@@ -59,15 +59,8 @@ export class IniciarSesionPage implements OnInit {
             }
             // Save session: Generate expiration date
             const expire_moment = moment().add(1, 'days');
-            data.expires_at = JSON.stringify(expire_moment.valueOf())
-            this.authService.role(val.username, val.password).subscribe(r => {
-              data = {
-                ...data,
-                r: r[r.length - 1]
-              }
-              this.authService.setSession(data);
-            }
-            )
+            data.expires_at = JSON.stringify(expire_moment.valueOf());
+            this.authService.setSession(data);
             console.log("User is logged in");
             this.router.navigateByUrl('/');
           }
