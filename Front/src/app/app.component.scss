@@ -1,17 +1,27 @@
 img {
-  box-shadow: 0px 0px 0.3rem lighten(rgb(152, 189, 67), 3%);
+  box-shadow: 0px 0px 1rem black;
   background-color: #39a81d75;
 }
 ion-list {
-  margin-top: 2rem;
-  box-shadow: 0px 0px 0.3rem lighten(rgb(152, 189, 67), 3%);
+  margin-top: 0.1rem;
+  height: 100%;
 }
-
+ion-button {
+  color: #3e852ca9;
+}
+ion-grid {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
 ion-toolbar {
   background-color: #3e852ca9;
 }
 @media (max-width: 640px) {
   ion-text {
     font-size: small;
+  }
+  ion-grid {
+    margin-top: 0.75rem;
+    margin-left: 1rem;
   }
 }

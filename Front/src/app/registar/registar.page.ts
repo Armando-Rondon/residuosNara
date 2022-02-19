@@ -26,6 +26,10 @@ export class RegistarPage implements OnInit {
     this.form = this.fb.group({
       username: '',
       password: '',
+      name: '',
+      sector: '',
+      localidad: '',
+      direccion: '',
     });
   }
 

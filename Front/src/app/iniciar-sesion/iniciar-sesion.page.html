@@ -1,6 +1,6 @@
 <ion-content>
   <ion-card>
-    <ion-card-header>{{pageOrigin}}</ion-card-header>
+    <ion-card-header>{{pageOrigin | uppercase}}</ion-card-header>
     <div *ngIf="!isLoading">
       <ion-card-content>
         <form novalidate (ngSubmit)="login()" [formGroup]="form">

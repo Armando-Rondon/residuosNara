@@ -1,6 +1,6 @@
 <ion-content>
   <ion-card>
-    <ion-card-header>{{pageOrigin}}</ion-card-header>
+    <ion-card-header>{{pageOrigin | uppercase}}</ion-card-header>
     <div *ngIf="!isLoading">
       <ion-card-content>
         <form novalidate (ngSubmit)="login()" [formGroup]="form">
@@ -38,8 +38,80 @@
           </div>
 
           <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="nombreId"
+              >Nombre
+            </ion-label>
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="namedId"
+                type="text"
+                placeholder="Nombre"
+                formControlName="name"
+                name="name"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="sectorId"
+              >Sector
+            </ion-label>
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="sectorId"
+                type="text"
+                placeholder="Sector Empresarial"
+                formControlName="sector"
+                name="sector"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="localidadId"
+              >Localidad
+            </ion-label>
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="localidadId"
+                type="text"
+                placeholder="Localidad"
+                formControlName="localidad"
+                name="localidad"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <ion-label class="col-md-2 col-form-label" for="direccionId"
+              >Dirección
+            </ion-label>
+
+            <div class="col-md-8">
+              <ion-input
+                class="form-control"
+                id="direccionId"
+                type="text"
+                placeholder="Dirección Completa"
+                formControlName="direccion"
+                name="direccion"
+                ngDefaultControl
+              ></ion-input>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
             <div class="offset-md-2 col-md-4">
-              <ion-button (click)="register()">Iniciar</ion-button>
+              <ion-button (click)="register()">Entra</ion-button>
               <ion-button [routerLink]="['']"> Cancel </ion-button>
             </div>
           </div>
