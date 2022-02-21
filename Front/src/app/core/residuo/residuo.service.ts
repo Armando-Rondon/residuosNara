@@ -12,12 +12,14 @@ import { Ler } from 'src/app/shared/ler';
 })
 export class ResiduoService {
   private residuosUrl = 'https://localhost:8000/residuos/';
-  private residuosByLerUrl = 'https://localhost:8000/residuos/ler';
+  private residuosByLerUrl = 'https://localhost:8000/residuos/ler/';
   private lersUrl = 'https://localhost:8000/ler/';
   constructor(private http: HttpClient) {}
 
-  getResiduosByLer(lers: any): Observable<Residuo[]> {
-    return this.http.get<Residuo[]>(this.residuosByLerUrl).pipe(
+  getResiduosByLers(lers: string[]): Observable<Residuo[]> {
+    let concat = lers.join(':');
+    const url = `${this.residuosByLerUrl}${concat}`;
+    return this.http.get<Residuo[]>(url).pipe(
       tap((data) => console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );

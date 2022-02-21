@@ -45,14 +45,45 @@ class LerController extends AbstractController
     }
 
     /**
-     * @Route("/residuos/ler", name="residuosLerPorId", methods={"GET", "POST"})
+     * @Route("/residuos/ler", name="residuosLerTodos", methods={"GET"})
      */
-    public function residuosLerPorId(ResiduosRepository $residuosRepository, Request $request): Response
-    {
+    public function residuosLerTodos(ResiduosRepository $residuosRepository, Request $request): Response
+    { 
         
-        $ids = json_decode($request->getContent())->ids;
+        $data = $residuosRepository->findAll();
+        $response = array();
+        foreach ($data as $residuo)
+        {
+            array_push($response, array(
+                'id' => $residuo->getId(),
+                'ler' => $residuo->getLer(),
+                'comentario' => $residuo->getComentario(),
+                'peligro' => $residuo->getPeligro(),
+                'categoria_peligrosidad' => $residuo->getCategoriaPeligrosidad(),
+                'tipo' => $residuo->getTipo(),
+                'cantidad' => $residuo->getCantidad(),
+                'precio' => $residuo->getPrecio(),
+                'unidad' => $residuo->getUnidad(),
+                'imagen' => $residuo->getImagen(),
+                
+                'empresa_id' => $residuo->getEmpresa() == null ? null : $residuo->getEmpresa()->getId()
+            ));
+        }
+        return $this->json(
+            $response
+        );
         
+    }
+
+    /**
+     * @Route("/residuos/ler/{ids}", name="residuosLerPorId", methods={"GET"})
+     */
+    public function residuosLerPorId(ResiduosRepository $residuosRepository, Request $request, $ids): Response
+    {       
+
         $residuos = array();
+
+        $ids = explode(":", $ids);
   
         $residuosTemp = $residuosRepository->findBy(['ler' => $ids]);            
         foreach ($residuosTemp as $residuoTemp)

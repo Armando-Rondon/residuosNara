@@ -30,7 +30,7 @@ export class HomePage {
   }
   Hello($event) {
     this.residuoService
-      .getResiduosByLer($event.details.value)
+      .getResiduosByLers($event.detail.value)
       .subscribe((data: Residuo[]) => (this.residuos = data));
   }
 }

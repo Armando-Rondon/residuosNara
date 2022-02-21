@@ -8,10 +8,14 @@ ion-list {
   margin-top: 4rem;
   background-color: rgb(255, 255, 255);
 }
+body {
+  color: white;
+}
 
 ion-item {
   color: black;
 }
+
 @media (max-width: 640px) {
   ion-list {
     margin: auto;
