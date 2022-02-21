@@ -162,29 +162,4 @@ class EmpresaController extends AbstractController
             "message"=>"empresa añadido",
         ]);
     }
-    /**
-     * @Route("/login", name="empresa_login", methods={"POST"})
-     */
-    public function login(Request $request, EmpresaRepository $empresaRespository): Response
-    {
-        $contrasena = $request->getContent()->contrasena;
-
-        try
-        {
-            $empresa = $empresaRepository->findBy(array('nif', $request->getContent())->nif);
-            $login_correcto = $contrasena == $empresa->getContrasena();
-        }
-        catch (Exception $e)
-        {
-            return $this->json([
-                'code' => 100,
-                'message' => "No existe ninguna empresa con ese nif registrada en la página web"
-            ]);
-        }
-
-        return $this->json([
-            'code' => $login_correcto ? 200 : 100,
-            'message' => $login_correcto ? "Inicio de sesion correcto" : "La contraseña no se correcta"
-        ]);
-    }
 }

@@ -6,11 +6,12 @@ use App\Repository\EmpresaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\User;
 
 /**
  * @ORM\Entity(repositoryClass=EmpresaRepository::class)
  */
-class Empresa
+class Empresa extends User
 {
     /**
      * @ORM\Id
@@ -18,11 +19,6 @@ class Empresa
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=10)
-     */
-    private $nif;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -45,30 +41,24 @@ class Empresa
     private $residuos;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $contrasena;
+    private $localidad;
 
-    public function __construct()
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $tipo;
+
+    public function __construct($username)
     {
+        parent::__construct($username);
         $this->residuos = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getNif(): ?string
-    {
-        return $this->nif;
-    }
-
-    public function setNif(string $nif): self
-    {
-        $this->nif = $nif;
-
-        return $this;
     }
 
     public function getNombre(): ?string
@@ -137,14 +127,33 @@ class Empresa
         return $this;
     }
 
-    public function getContrasena(): ?string
+    public function getLocalidad(): ?string
     {
-        return $this->contrasena;
+        return $this->localidad;
     }
 
-    public function setContrasena(string $contrasena): self
+    public function setLocalidad(?string $localidad): self
     {
-        $this->contrasena = $contrasena;
+        $this->localidad = $localidad;
+
+        return $this;
+    }
+
+    public function getTipo(): ?string
+    {
+        return $this->tipo;
+    }
+
+    public function getRoles()
+    {
+        $roles = $this->rol;
+        $roles[] = 'ROLE_EMPRESA';
+        return $roles;
+    }
+
+    public function setTipo(string $tipo): self
+    {
+        $this->tipo = $tipo;
 
         return $this;
     }

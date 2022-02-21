@@ -19,7 +19,10 @@ export class RegistarPage implements OnInit {
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-      type: ['', Validators.required],
+      name: ['', Validators.required],
+      sector: ['', Validators.required],
+      localidad: ['', Validators.required],
+      direccion: ['', Validators.required],
     });
   }
   ngOnInit(): void {
@@ -37,41 +40,51 @@ export class RegistarPage implements OnInit {
     const val = this.form.value;
 
     if (val.username && val.password) {
-      this.authService.register(val.username, val.password, val.type).subscribe(
-        (data) => {
-          data = {
-            ...data,
-            u: val.username,
-            r: val.type,
-          };
-          this.authService
-            .login(val.username, val.password)
-            .subscribe((data) => {
-              data = {
-                ...data,
-                u: val.username,
-              };
-              // Save session: Generate expiration date
-              const expire_moment = moment().add(1, 'days');
-              data.expires_at = JSON.stringify(expire_moment.valueOf());
-              this.authService
-                .role(val.username, val.password)
-                .subscribe((r) => {
-                  data = {
-                    ...data,
-                    r: r[r.length - 1],
-                  };
-                  this.authService.setSession(data);
-                });
-              console.log('User is logged in');
-              this.router.navigateByUrl('/');
-            });
-        },
-        () => {
-          console.log('User is registered in');
-          this.router.navigateByUrl('/');
-        }
-      );
+      this.authService
+        .register(
+          val.username,
+          val.password,
+          "empresa",
+          val.name,
+          val.sector,
+          val.localidad,
+          val.direccion
+        )
+        .subscribe(
+          (data) => {
+            data = {
+              ...data,
+              u: val.username,
+              r: val.type,
+            };
+            this.authService
+              .login(val.username, val.password)
+              .subscribe((data) => {
+                data = {
+                  ...data,
+                  u: val.username,
+                };
+                // Save session: Generate expiration date
+                const expire_moment = moment().add(1, 'days');
+                data.expires_at = JSON.stringify(expire_moment.valueOf());
+                this.authService
+                  .role(val.username, val.password)
+                  .subscribe((r) => {
+                    data = {
+                      ...data,
+                      r: r[r.length - 1],
+                    };
+                    this.authService.setSession(data);
+                  });
+                console.log('User is logged in');
+                this.router.navigateByUrl('/');
+              });
+          },
+          () => {
+            console.log('User is registered in');
+            this.router.navigateByUrl('/');
+          }
+        );
     }
   }
 }

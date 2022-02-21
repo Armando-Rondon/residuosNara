@@ -8,10 +8,20 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass=App\Repository\UserRepository::class)
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="roles", type="string")
+ * @ORM\DiscriminatorMap({
+ *      "empresa" = "App\Entity\Empresa"
+ * })
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    public function __construct($username)
+    {
+        $this->username = $username;
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -24,10 +34,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $username;
 
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
 
     /**
      * @var string The hashed password

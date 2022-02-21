@@ -28,13 +28,21 @@ export class AuthService {
       );
   }
 
-  register(username: string, password: string, type: string) {
+  register(
+    username: string,
+    password: string,
+    type: string,
+    name: string,
+    sector: string,
+    localidad: string,
+    direccion: string
+  ) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this.http
       .post<AuthResult>(
         this.authUrl + '/register',
-        { username, password, type },
+        { username, password, type, name, sector, localidad, direccion },
         { headers }
       )
       .pipe(tap((res) => console.log('registered ' + JSON.stringify(res))));
@@ -90,12 +98,12 @@ export class AuthService {
   }
 
   getRole() {
-    return localStorage.getItem('r') === 'ROLE_STUDENT'
-      ? 's'
-      : localStorage.getItem('r') === 'ROLE_EMPLOYER'
+    return localStorage.getItem('r') === 'ROLE_EMPRESA'
       ? 'e'
+      : localStorage.getItem('r') === 'ROLE_EMPLOYER'
+      ? 'x'
       : localStorage.getItem('r') === 'ROLE_ARTEAN'
-      ? 'a'
+      ? 'x'
       : '';
   }
 
