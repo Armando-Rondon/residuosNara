@@ -144,7 +144,7 @@ class Empresa extends User
         return $this->tipo;
     }
 
-    public function getRoles()
+    public function getRoles() 
     {
         $roles = $this->rol;
         $roles[] = 'ROLE_EMPRESA';

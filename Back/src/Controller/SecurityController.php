@@ -59,7 +59,7 @@ class SecurityController extends AbstractController
         $data = $request->getContent();
         $content = json_decode($data);
         $username = $content->username;
-        $db_user = $em->getRepositor(User::class)->findOneBy([
+        $db_user = $em->getRepository(User::class)->findOneBy([
             'username' => $username,
         ]);
         return new JsonResponse( $db_user->getRoles());

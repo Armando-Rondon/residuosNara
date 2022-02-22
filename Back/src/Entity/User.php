@@ -41,6 +41,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    protected $rol = ['ROLE_USER'];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,13 +76,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
-    public function getRoles(): array
+    public function getRoles()
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->rol;
     }
 
     public function setRoles(array $roles): self
