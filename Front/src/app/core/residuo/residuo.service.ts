@@ -11,9 +11,9 @@ import { Ler } from 'src/app/shared/ler';
   providedIn: 'root',
 })
 export class ResiduoService {
-  private residuosUrl = 'https://localhost:8000/residuos/';
-  private residuosByLerUrl = 'https://localhost:8000/residuos/ler/';
-  private lersUrl = 'https://localhost:8000/ler/';
+  private residuosUrl = 'https://residuosnara.herokuapp.com//residuos/';
+  private residuosByLerUrl = 'https://residuosnara.herokuapp.com//residuos/ler/';
+  private lersUrl = 'https://residuosnara.herokuapp.com//ler/';
   constructor(private http: HttpClient) {}
 
   getResiduosByLers(lers: string[]): Observable<Residuo[]> {
